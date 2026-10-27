@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario ITT</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <!-- Acceso discreto para el jefe -->
+    <button id="admin-access" class="admin-access"
+            type="button" aria-label="Acceso del jefe"
+            title="Acceso del jefe">
+        <i class="fa-solid fa-lock"></i>
+    </button>
+
+    <!-- Ventana de inicio de sesión -->
+    <div id="login-modal" class="modal" hidden>
+        <form id="login-form" class="login-card">
+            <button type="button" id="close-login"
+                    class="close-modal" aria-label="Cerrar">×</button>
+
+            <h2>Acceso del jefe</h2>
+            <p>Inicia sesión para administrar los viajes.</p>
+
+            <label for="email">Correo electrónico</label>
+            <input id="email" type="email"
+                   autocomplete="username" required>
+
+            <label for="password">Contraseña</label>
+            <input id="password" type="password"
+                   autocomplete="current-password" required>
+
+            <button type="submit" id="login-button">
+                Iniciar sesión
+            </button>
+
+            <p id="login-message" class="message" role="status"></p>
+        </form>
+    </div>
+
+    <header class="topbar">
+        <h1><i class="fa-solid fa-bus"></i> Calendario ITT</h1>
+        <p>Calendario de transporte escolar</p>
+        <button id="logout-button" class="secondary-button"
+                type="button" hidden>
+            Cerrar sesión
+        </button>
+    </header>
+
+    <div class="container">
+
+        <!-- CALENDARIO ORIGINAL A LA IZQUIERDA -->
+        <div class="left">
+            <div class="calendar">
+
+                <div class="month">
+                    <i class="fa fa-angle-left prev"
+                       id="prev" role="button" tabindex="0"
+                       aria-label="Mes anterior"></i>
+
+                    <div class="date"></div>
+
+                    <i class="fa fa-angle-right next"
+                       id="next" role="button" tabindex="0"
+                       aria-label="Mes siguiente"></i>
+                </div>
+
+                <div class="weekdays">
+                    <div>L</div>
+                    <div>M</div>
+                    <div>M</div>
+                    <div>J</div>
+                    <div>V</div>
+                    <div>S</div>
+                    <div>D</div>
+                </div>
+
+                <div class="days"></div>
+
+                <div class="calendar-legend">
+                    <span><i class="legend-dot busy-dot"></i> Día con viajes</span>
+                    <span><i class="legend-dot today-dot"></i> Hoy</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIAJES A LA DERECHA -->
+        <aside class="right">
+
+            <section class="panel">
+                <h2>Estado del transporte</h2>
+                <p id="selected-date">Selecciona un día</p>
+
+                <div id="transport-status" class="status">
+                    Selecciona un día
+                </div>
+
+                <p id="trip-count" class="muted">
+                    Consulta los viajes registrados.
+                </p>
+            </section>
+
+            <section class="panel">
+                <h2>Viajes registrados</h2>
+                <div id="trip-list">
+                    <p class="muted">
+                        Selecciona un día para consultar sus viajes.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Solo visible para el jefe autenticado -->
+            <section id="admin-panel" class="panel" hidden>
+                <h2 id="form-title">Registrar viaje</h2>
+
+                <form id="trip-form">
+                    <label for="destino">Destino o motivo</label>
+                    <input id="destino" type="text"
+                           maxlength="150" required>
+                           <label for="fecha">Fecha de salida</label>
+                           <input id="fecha" type="date" required>
+                           <label for="fecha-entrada">Fecha de regreso</label>
+                           <input id="fecha-entrada" type="date" required>
+
+                    <label for="hora">Hora de salida</label>
+                    <input id="hora" type="time" required>
+
+                    <label for="alumnos">Cantidad de alumnos</label>
+                    <input id="alumnos" type="number"
+                           min="0" max="10000" step="1" required>
+
+                    <label for="unidad">Unidad de transporte</label>
+                    <input id="unidad" type="text"
+                           maxlength="100" required>
+
+                    <label for="responsable">Responsable</label>
+                    <input id="responsable" type="text"
+                           maxlength="150" required>
+
+                    <button id="save-trip-button" type="submit">
+                        Guardar viaje
+                    </button>
+
+                    <button id="cancel-edit-button"
+                            class="secondary-button"
+                            type="button" hidden>
+                        Cancelar edición
+                    </button>
+
+                    <p id="trip-message" class="message"
+                       role="status"></p>
+                </form>
+            </section>
+        </aside>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+</body>
+</html>

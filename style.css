@@ -1,0 +1,944 @@
+
+:root {
+    --primary-clr: #b38add;
+    --dark-clr: #373c4f;
+    --text-clr: #878895;
+    --busy-clr: #d95362;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    min-height: 100vh;
+    padding: 25px 15px;
+    background: #e2e1dc;
+    color: #373c4f;
+}
+
+.topbar {
+    position: relative;
+    width: min(1200px, 100%);
+    margin: 0 auto 15px;
+    padding: 0 10px;
+}
+
+.topbar h1 {
+    font-size: 1.7rem;
+}
+
+.topbar p {
+    margin-top: 5px;
+    color: #686b79;
+}
+
+.container {
+    position: relative;
+    width: min(1200px, 100%);
+    min-height: 760px;
+    margin: 0 auto;
+    padding: 5px;
+    display: flex;
+    align-items: stretch;
+    color: #fff;
+    background: var(--dark-clr);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px #0001;
+}
+
+.left {
+    width: 60%;
+    min-width: 0;
+    padding: 20px;
+}
+
+.calendar {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    color: var(--text-clr);
+    background: #fff;
+    border-radius: 5px;
+}
+
+.calendar::before,
+.calendar::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: 12px;
+    height: 97%;
+    border-radius: 0 5px 5px 0;
+    background: #d3d5d6d7;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.calendar::before {
+    height: 94%;
+    left: calc(100% + 12px);
+    background: #999;
+}
+
+.calendar .month {
+    width: 100%;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 35px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.calendar .month .prev,
+.calendar .month .next {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.calendar .month .prev:hover,
+.calendar .month .next:hover {
+    color: var(--primary-clr);
+}
+
+.calendar .weekdays {
+    width: 100%;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    font-size: .9rem;
+    font-weight: 500;
+}
+
+.calendar .weekdays div {
+    width: 14.2857%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.calendar .days {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    grid-auto-rows: minmax(65px, 1fr);
+    flex: 1;
+    padding: 0 10px 15px;
+}
+
+.calendar .days .day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    border: 1px solid #f5f5f5;
+    color: var(--primary-clr);
+    cursor: pointer;
+    transition: background .2s;
+}
+
+.calendar .days .day:hover {
+    background: #eee5f8;
+}
+
+.calendar .days .prev-date,
+.calendar .days .next-date {
+    color: #ccc;
+}
+
+.calendar .days .today {
+    background: var(--primary-clr);
+    color: white;
+    border-radius: 5px;
+}
+
+.calendar .days .day.selected {
+    outline: 3px solid var(--primary-clr);
+    outline-offset: -4px;
+}
+
+.calendar .days .day.busy-day {
+    background: #ffe0e3;
+    color: #a51d2d;
+    font-weight: 700;
+}
+
+.calendar .days .day.busy-day.today {
+    background: var(--primary-clr);
+    color: white;
+}
+
+.calendar-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 10px 20px 20px;
+    font-size: .8rem;
+}
+
+.calendar-legend span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.busy-dot {
+    background: var(--busy-clr);
+}
+
+.today-dot {
+    background: var(--primary-clr);
+}
+
+/* PANEL DERECHO */
+
+.right {
+    width: 40%;
+    min-width: 0;
+    padding: 20px 20px 20px 10px;
+}
+
+.panel {
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background: #41475a;
+}
+
+.panel h2 {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+#selected-date {
+    margin-bottom: 12px;
+    color: #e4d9f0;
+    text-transform: capitalize;
+}
+
+.status {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    background: #e6e7ec;
+    color: #373c4f;
+    font-size: .9rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.status.ocupado {
+    background: #ffe0e3;
+    color: #a51d2d;
+}
+
+.status.desocupado {
+    background: #d8f5e1;
+    color: #176b38;
+}
+
+.muted {
+    color: #d3d5df;
+    font-size: .88rem;
+    line-height: 1.5;
+}
+
+/* VIAJES */
+
+.trip-card {
+    margin-top: 12px;
+    padding: 14px;
+    background: #4b5269;
+    border-left: 4px solid var(--primary-clr);
+    border-radius: 6px;
+    overflow-wrap: anywhere;
+}
+
+.trip-card h3 {
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.trip-card p {
+    margin: 5px 0;
+    color: #ececf1;
+    font-size: .85rem;
+    line-height: 1.5;
+}
+
+.trip-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.trip-actions button {
+    flex: 1;
+    padding: 8px;
+    font-size: .8rem;
+}
+
+.trip-actions .delete-button {
+    background: #c54c5b;
+}
+
+/* BOTONES Y FORMULARIOS */
+
+button {
+    padding: 10px 14px;
+    border: 0;
+    border-radius: 6px;
+    background: var(--primary-clr);
+    color: white;
+    font-size: .9rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: .86;
+}
+
+button:disabled {
+    opacity: .55;
+    cursor: not-allowed;
+}
+
+.secondary-button {
+    margin-top: 10px;
+    background: #666c80;
+}
+
+label {
+    display: block;
+    margin: 12px 0 6px;
+    font-size: .88rem;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d8d8df;
+    border-radius: 6px;
+    font-size: .92rem;
+}
+
+input:focus {
+    outline: 2px solid var(--primary-clr);
+}
+
+#trip-form > button {
+    width: 100%;
+    margin-top: 12px;
+}
+
+.message {
+    margin-top: 10px;
+    font-size: .88rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.message.error {
+    color: #ffb8bf;
+}
+
+.message.success {
+    color: #9ce8b7;
+}
+
+/* CANDADO Y VENTANA DE ACCESO */
+
+.admin-access {
+    position: fixed;
+    z-index: 20;
+    top: 18px;
+    right: 20px;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 1px solid #d4c1e9;
+    border-radius: 50%;
+    background: white;
+    color: var(--primary-clr);
+    font-size: 1rem;
+    box-shadow: 0 3px 12px #0001;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #171a25a8;
+}
+
+.login-card {
+    position: relative;
+    width: 100%;
+    max-width: 390px;
+    padding: 30px;
+    border-radius: 10px;
+    background: white;
+    color: #373c4f;
+    box-shadow: 0 12px 35px #0003;
+}
+
+.login-card h2 {
+    margin-bottom: 10px;
+}
+
+.login-card > p {
+    margin-bottom: 15px;
+    color: #777987;
+    font-size: .9rem;
+}
+
+.login-card > button[type="submit"] {
+    width: 100%;
+    margin-top: 18px;
+}
+
+.login-card .message.error {
+    color: #b42335;
+}
+
+.login-card .message.success {
+    color: #176b38;
+}
+
+.close-modal {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    padding: 3px 9px;
+    background: transparent;
+    color: #666;
+    font-size: 1.6rem;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        min-height: 0;
+    }
+
+    .left,
+    .right {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .calendar {
+        min-height: 600px;
+    }
+
+    .calendar .days {
+        grid-auto-rows: minmax(55px, 1fr);
+    }
+
+    .topbar {
+        padding-right: 45px;
+    }
+
+    .admin-access {
+        top: 15px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 15px 8px;
+    }
+
+    .topbar h1 {
+        font-size: 1.35rem;
+    }
+
+    .calendar {
+        min-height: 470px;
+    }
+
+    .calendar .month {
+        min-height: 85px;
+        padding: 0 12px;
+        font-size: 1rem;
+    }
+
+    .calendar .weekdays {
+        min-height: 48px;
+        padding: 0 3px;
+        font-size: .7rem;
+    }
+
+    .calendar .days {
+        grid-auto-rows: minmax(42px, 1fr);
+        padding: 0 4px 10px;
+        font-size: .85rem;
+    }
+
+    .panel {
+        padding: 15px;
+    }
+}
+.no-trips {
+    text-align: center;
+    padding: 35px 15px;
+    color: #888;
+}
+
+.no-trips i {
+    display: block;
+    font-size: 42px;
+    color: #b38add;
+    margin-bottom: 15px;
+}
+
+.no-trips h3 {
+    color: #373c4f;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.no-trips p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* =========================================
+   CALENDARIO ITT - DISEÑO RESPONSIVE
+   Celulares, tablets y computadoras
+   ========================================= */
+
+/* Evita desbordamientos y tamaños inesperados */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    min-height: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    width: 100%;
+    min-width: 320px;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Imágenes y elementos multimedia */
+img,
+video,
+iframe {
+    max-width: 100%;
+}
+
+/* Contenedores principales */
+.container,
+.contenedor,
+main,
+.main-content,
+.app-container {
+    width: 100%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Formularios y campos */
+input,
+select,
+textarea,
+button {
+    font: inherit;
+    max-width: 100%;
+}
+
+input,
+select,
+textarea {
+    min-width: 0;
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+    width: 100%;
+}
+
+button {
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+/* Evita que textos largos rompan el diseño */
+h1,
+h2,
+h3,
+p,
+label,
+td,
+th {
+    overflow-wrap: anywhere;
+}
+
+/* Calendario */
+.calendar,
+#calendar,
+.calendar-container {
+    width: 100%;
+    min-width: 0;
+}
+
+.calendar-grid,
+.calendar-days,
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    width: 100%;
+}
+
+.calendar-day,
+.day,
+.calendar-cell {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+/* Cuadros y tarjetas de viajes */
+.trips,
+.trips-container,
+.trip-list,
+.trip-card,
+.viaje-card {
+    min-width: 0;
+    max-width: 100%;
+}
+
+/* Tablas grandes */
+.table-container,
+.table-responsive {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+table {
+    max-width: 100%;
+}
+
+/* =========================================
+   TABLETS
+   ========================================= */
+
+@media (max-width: 1024px) {
+    .container,
+    .contenedor,
+    main,
+    .main-content,
+    .app-container {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    h1 {
+        font-size: clamp(1.6rem, 4vw, 2.2rem);
+    }
+
+    .calendar-day,
+    .day,
+    .calendar-cell {
+        padding: 8px 4px;
+    }
+}
+
+/* =========================================
+   CELULARES
+   ========================================= */
+
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+
+    .container,
+    .contenedor,
+    main,
+    .main-content,
+    .app-container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        line-height: 1.25;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    h3 {
+        font-size: 1rem;
+    }
+
+    /* Botones cómodos para tocar */
+    button {
+        min-height: 42px;
+    }
+
+    /* Formularios en una columna */
+    form {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    input:not([type="checkbox"]):not([type="radio"]),
+    select,
+    textarea {
+        font-size: 16px;
+        min-height: 42px;
+    }
+
+    /* Calendario compacto */
+    .calendar-grid,
+    .calendar-days,
+    .calendar-weekdays {
+        gap: 2px;
+    }
+
+    .calendar-day,
+    .day,
+    .calendar-cell {
+        padding: 6px 1px;
+        font-size: 12px;
+        min-height: 42px;
+    }
+
+    /* Botones de navegación del calendario */
+    .calendar-header,
+    .calendar-navigation,
+    .calendar-controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+    /* Listas de viajes */
+    .trip-card,
+    .viaje-card {
+        width: 100%;
+        padding: 12px;
+    }
+
+    /* Acciones y controles */
+    .form-actions,
+    .button-group,
+    .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .form-actions button,
+    .button-group button,
+    .actions button {
+        flex: 1 1 120px;
+    }
+
+    /* Modales */
+    .modal,
+    .modal-content {
+        width: calc(100% - 24px);
+        max-width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
+
+/* =========================================
+   CELULARES MUY ESTRECHOS
+   ========================================= */
+
+@media (max-width: 380px) {
+    .calendar-day,
+    .day,
+    .calendar-cell {
+        font-size: 10px;
+        padding: 4px 0;
+    }
+
+    .container,
+    .contenedor,
+    main,
+    .main-content,
+    .app-container {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+}
+
+/* Respeta a usuarios que prefieren menos animaciones */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+
+/* ========================================
+   CORRECCIÓN DE PROPORCIONES - CALENDARIO ITT
+   ======================================== */
+
+/* Contenedor principal: calendario y paneles */
+.container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 20px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Evitar que los viajes cambien el ancho del calendario */
+.left,
+.right {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Calendario */
+.left .calendar {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Las siete columnas siempre conservan su proporción */
+.calendar .weekdays,
+.calendar .days {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    width: 100%;
+    min-width: 0;
+}
+
+/* Evitar que un número o contenido agrande una celda */
+.calendar .weekdays > div,
+.calendar .days > div {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+}
+
+/* El contenido de los viajes no debe estirar el panel */
+.right .panel,
+#trip-list,
+#admin-panel {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+#trip-list {
+    overflow-wrap: anywhere;
+}
+
+/* Formularios adaptables */
+#trip-form {
+    width: 100%;
+    min-width: 0;
+}
+
+#trip-form input,
+#trip-form select,
+#trip-form textarea {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Tablet y celular */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+        padding: 12px;
+    }
+
+    .left,
+    .right {
+        width: 100%;
+    }
+
+    .left .calendar {
+        width: 100%;
+    }
+}
+
+/* Celulares pequeños */
+@media (max-width: 380px) {
+    .container {
+        padding: 8px;
+        gap: 12px;
+    }
+
+    .calendar .weekdays > div,
+    .calendar .days > div {
+        padding-left: 1px;
+        padding-right: 1px;
+        font-size: 12px;
+    }
+}
+
