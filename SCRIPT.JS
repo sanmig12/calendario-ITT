@@ -117,6 +117,14 @@ function renderCalendar() {
                     : "next-date"
             );
         }
+// Identificar sábados y domingos
+const isWeekend =
+    cellDate.getDay() === 0 || cellDate.getDay() === 6;
+
+if (sameMonth && isWeekend) {
+    cell.classList.add("weekend-day");
+    cell.title = "Fin de semana";
+}
 
         if (keyDate(cellDate) === keyDate(today)) {
             cell.classList.add("today");
