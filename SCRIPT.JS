@@ -126,16 +126,22 @@ function renderCalendar() {
             cell.classList.add("selected");
         }
 
-        if (
-            sameMonth &&
-            trips.some(t => 
-                t.fecha <= keyDate(cellDate) &&
-                t.fecha_entrada >= keyDate(cellDate)
-            )
-        ) {
-            cell.classList.add("busy-day");
-            cell.title = "Hay viajes registrados";
-        }
+        
+const isBusy = trips.some(t =>
+    t.fecha <= keyDate(cellDate) &&
+    t.fecha_entrada >= keyDate(cellDate)
+);
+
+if (sameMonth) {
+    if (isBusy) {
+        cell.classList.add("busy-day");
+        cell.title = "Día ocupado";
+    } else {
+        cell.classList.add("free-day");
+        cell.title = "Día disponible";
+    }
+}
+
 
         cell.addEventListener("click", () => selectDay(cellDate));
         daysContainer.appendChild(cell);
