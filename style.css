@@ -1019,3 +1019,9 @@ table {
     animation: none !important;
     box-shadow: none !important;
 }
+
+/* IGUALAR LOS BORDES DE TODOS LOS DÍAS */
+.calendar .days .day.weekend-day,
+.calendar .days .day.weekend-day:hover {
+    border: 1px solid #f5f5f5 !important;
+}
