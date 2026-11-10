@@ -968,10 +968,10 @@ table {
 }
 
 /* CONSERVAR LAS LÍNEAS DE LOS FINES DE SEMANA */
+/* LÍNEAS DE LOS FINES DE SEMANA */
 .calendar .days .day.weekend-day {
-    border: 1px solid #f5f5f5 !important;
+    border: 1px solid #6b4b25 !important;
 }
-
 /* EFECTO AL PASAR EL CURSOR */
 .calendar .days .day.free-day:hover {
     background: #b8eac8 !important;
