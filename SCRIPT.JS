@@ -126,12 +126,6 @@ function renderCalendar() {
             cell.classList.add("selected");
         }
 
-        
-const isBusy = trips.some(t =>
-    t.fecha <= keyDate(cellDate) &&
-    t.fecha_entrada >= keyDate(cellDate)
-);
-
 const dateKey = keyDate(cellDate);
 
 const isBusy = trips.some(t =>
@@ -148,6 +142,7 @@ if (sameMonth) {
         cell.title = "Día disponible";
     }
 }
+
 
         cell.addEventListener("click", () => selectDay(cellDate));
         daysContainer.appendChild(cell);
