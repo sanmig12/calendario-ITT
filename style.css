@@ -1022,8 +1022,9 @@ table {
 }
 
 /* PUNTO NARANJA DE LA LEYENDA */
+/* LEYENDA */
 .weekend-dot {
-    background: #ff9800;
+    background-color: #bd8950 !important;
 }
 
 
@@ -1034,18 +1035,18 @@ table {
 
 /* SÁBADOS Y DOMINGOS: NARANJA */
 .calendar .days .day.weekend-day {
-    background: #ffb74d !important;
-    color: #713900 !important;
-    font-weight: 700 !important;
+    background-color: #382d23 !important;
+    color: #e9ad70 !important;
+    font-weight: 600;
 }
 
 /* FIN DE SEMANA AL PASAR EL CURSOR */
 .calendar .days .day.weekend-day:hover {
-    background: #ffa726 !important;
+    background-color: #493725 !important;
 }
 
 /* HOY: CONSERVAR MORADO */
 .calendar .days .day.weekend-day.today {
-    background: var(--primary-clr) !important;
-    color: white !important;
+    background-color: var(--primary-clr) !important;
+    color: #ffffff !important;
 }
