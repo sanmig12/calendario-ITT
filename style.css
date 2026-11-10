@@ -977,6 +977,22 @@ table {
     background: #b8eac8 !important;
 }
 
+/* DÍAS OCUPADOS: ROJO MÁS OSCURO */
+.calendar .days .day.busy-day:hover {
+    background: #f3c1c6 !important;
+    color: #a51d2d !important;
+}
+.calendar .days .day.today:hover {
+    background: #b38add !important;
+    color: white !important;
+}
+
+/* FINES DE SEMANA: CAFÉ-NARANJA MÁS OSCURO */
+.calendar .days .day.weekend-day:hover {
+    background: #30271f !important;
+    color: #e9ad70 !important;
+}
+
 .calendar .days .day.weekend-day:hover {
     background: #30271f !important;
     color: #e9ad70 !important;
