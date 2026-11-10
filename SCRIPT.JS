@@ -91,6 +91,8 @@ function message(element, text, type = "") {
 }
 
 // CALENDARIO
+
+// CALENDARIO
 function renderCalendar() {
     dateTitle.textContent = `${months[month]} ${year}`;
     daysContainer.innerHTML = "";
@@ -98,7 +100,6 @@ function renderCalendar() {
     const firstDay = new Date(year, month, 1).getDay();
     const offset = (firstDay + 6) % 7;
 
-    // Se dibujan 42 casillas para conservar el formato del calendario.
     for (let i = 0; i < 42; i++) {
         const cellDate = new Date(year, month, i - offset + 1);
         const cell = document.createElement("div");
@@ -110,6 +111,11 @@ function renderCalendar() {
             cellDate.getMonth() === month &&
             cellDate.getFullYear() === year;
 
+        const dateKey = keyDate(cellDate);
+        const isToday = dateKey === keyDate(today);
+        const isWeekend =
+            cellDate.getDay() === 0 || cellDate.getDay() === 6;
+
         if (!sameMonth) {
             cell.classList.add(
                 cellDate < new Date(year, month, 1)
@@ -117,49 +123,41 @@ function renderCalendar() {
                     : "next-date"
             );
         }
-// Identificar el día de hoy
-if (keyDate(cellDate) === keyDate(today)) {
-    cell.classList.add("today");
-}
-// Identificar sábados y domingos
-const isWeekend =
-    cellDate.getDay() === 0 || cellDate.getDay() === 6;
 
-if (sameMonth && isWeekend) {
-    cell.classList.add("weekend-day");
-    cell.title = "Fin de semana";
-}
-
-        if (keyDate(cellDate) === keyDate(today)) {
-            cell.classList.add("today");
-        }
-
-        if (keyDate(cellDate) === keyDate(selectedDate)) {
+        if (dateKey === keyDate(selectedDate)) {
             cell.classList.add("selected");
         }
 
-const dateKey = keyDate(cellDate);
+        if (sameMonth) {
+            if (isWeekend) {
+                cell.classList.add("weekend-day");
+                cell.title = "Fin de semana";
+            } else {
+                const isBusy = trips.some(t =>
+                    t.fecha <= dateKey &&
+                    t.fecha_entrada >= dateKey
+                );
 
-const isBusy = trips.some(t =>
-    t.fecha <= dateKey &&
-    t.fecha_entrada >= dateKey
-);
+                if (isBusy) {
+                    cell.classList.add("busy-day");
+                    cell.title = "Día con viajes";
+                } else {
+                    cell.classList.add("free-day");
+                    cell.title = "Día disponible";
+                }
+            }
+        }
 
-if (sameMonth) {
-    if (isBusy) {
-        cell.classList.add("busy-day");
-        cell.title = "Día ocupado";
-    } else {
-        cell.classList.add("free-day");
-        cell.title = "Día disponible";
-    }
-}
-
+        if (isToday) {
+            cell.classList.add("today");
+            cell.title = "Hoy";
+        }
 
         cell.addEventListener("click", () => selectDay(cellDate));
         daysContainer.appendChild(cell);
     }
 }
+
 
 async function selectDay(date) {
     selectedDate = new Date(
