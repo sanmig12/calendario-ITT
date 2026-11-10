@@ -132,6 +132,13 @@ const isBusy = trips.some(t =>
     t.fecha_entrada >= keyDate(cellDate)
 );
 
+const dateKey = keyDate(cellDate);
+
+const isBusy = trips.some(t =>
+    t.fecha <= dateKey &&
+    t.fecha_entrada >= dateKey
+);
+
 if (sameMonth) {
     if (isBusy) {
         cell.classList.add("busy-day");
@@ -141,7 +148,6 @@ if (sameMonth) {
         cell.title = "Día disponible";
     }
 }
-
 
         cell.addEventListener("click", () => selectDay(cellDate));
         daysContainer.appendChild(cell);
