@@ -1025,3 +1025,27 @@ table {
 .weekend-dot {
     background: #ff9800;
 }
+
+
+
+/* =====================================
+   PRIORIDAD DE COLORES DEL CALENDARIO
+===================================== */
+
+/* SÁBADOS Y DOMINGOS: NARANJA */
+.calendar .days .day.weekend-day {
+    background: #ffb74d !important;
+    color: #713900 !important;
+    font-weight: 700 !important;
+}
+
+/* FIN DE SEMANA AL PASAR EL CURSOR */
+.calendar .days .day.weekend-day:hover {
+    background: #ffa726 !important;
+}
+
+/* HOY: CONSERVAR MORADO */
+.calendar .days .day.weekend-day.today {
+    background: var(--primary-clr) !important;
+    color: white !important;
+}
