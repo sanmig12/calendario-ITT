@@ -942,3 +942,39 @@ table {
     }
 }
 
+
+
+/* =================================
+   COLORES DE DISPONIBILIDAD
+================================= */
+
+/* Días disponibles */
+.calendar .days .day.free-day {
+    background-color: #d8f5e1;
+    color: #176b38;
+    font-weight: 600;
+}
+
+/* Efecto al pasar el cursor */
+.calendar .days .day.free-day:hover {
+    background-color: #b8eac8;
+}
+
+/* Días ocupados */
+.calendar .days .day.busy-day {
+    background-color: #ffe0e3;
+    color: #a51d2d;
+    font-weight: 700;
+}
+
+/* Hoy también conserva el verde si está disponible */
+.calendar .days .day.free-day.today {
+    background-color: #27ae60;
+    color: white;
+}
+
+/* Hoy conserva el rojo si está ocupado */
+.calendar .days .day.busy-day.today {
+    background-color: #d95362;
+    color: white;
+}
