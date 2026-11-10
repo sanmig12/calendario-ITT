@@ -967,6 +967,11 @@ table {
     font-weight: 700;
 }
 
+/* CONSERVAR LAS LÍNEAS DE LOS FINES DE SEMANA */
+.calendar .days .day.weekend-day {
+    border: 1px solid #f5f5f5 !important;
+}
+
 /* EFECTO AL PASAR EL CURSOR */
 .calendar .days .day.free-day:hover {
     background: #b8eac8 !important;
