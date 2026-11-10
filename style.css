@@ -942,63 +942,55 @@ table {
     }
 }
 
+
 /* =====================================
-   COLORES DEL CALENDARIO
+   COLORES Y EFECTOS DEL CALENDARIO
 ===================================== */
 
 /* DÍAS DISPONIBLES: VERDE */
 .calendar .days .day.free-day {
     background: #d8f5e1 !important;
     color: #176b38 !important;
+    border: 1px solid #f5f5f5 !important;
     font-weight: 600;
+}
+
+/* EFECTO VERDE */
+.calendar .days .day.free-day:hover {
+    background: #b8eac8 !important;
 }
 
 /* DÍAS OCUPADOS: ROJO */
 .calendar .days .day.busy-day {
     background: #ffe0e3 !important;
     color: #a51d2d !important;
+    border: 1px solid #f5f5f5 !important;
     font-weight: 700;
 }
 
-/* SÁBADOS Y DOMINGOS: NARANJA */
-.calendar .days .day.weekend-day {
-    background: #ffcc80 !important;
-    color: #8a4300 !important;
-    font-weight: 700;
-}
-
-/* CONSERVAR LAS LÍNEAS DE LOS FINES DE SEMANA */
-/* LÍNEAS DE LOS FINES DE SEMANA */
-.calendar .days .day.weekend-day {
-    border: 1px solid #6b4b25 !important;
-}
-/* EFECTO AL PASAR EL CURSOR */
-.calendar .days .day.free-day:hover {
-    background: #b8eac8 !important;
-}
-
-/* DÍAS OCUPADOS: ROJO MÁS OSCURO */
+/* EFECTO ROJO AL PASAR EL CURSOR */
 .calendar .days .day.busy-day:hover {
     background: #f3c1c6 !important;
-    color: #a51d2d !important;
+    color: #8f1828 !important;
 }
+
+/* FINES DE SEMANA: CAFÉ-NARANJA */
+.calendar .days .day.weekend-day {
+    background: #382d23 !important;
+    color: #e9ad70 !important;
+    border: 1px solid #f5f5f5 !important;
+    font-weight: 700;
+}
+
+/* EFECTO CAFÉ-NARANJA AL PASAR EL CURSOR */
+.calendar .days .day.weekend-day:hover {
+    background: #59432f !important;
+    color: #ffd09a !important;
+}
+
+/* HOY: SIEMPRE MORADO */
+.calendar .days .day.today,
 .calendar .days .day.today:hover {
-    background: #b38add !important;
-    color: white !important;
-}
-
-/* FINES DE SEMANA: CAFÉ-NARANJA MÁS OSCURO */
-.calendar .days .day.weekend-day:hover {
-    background: #30271f !important;
-    color: #e9ad70 !important;
-}
-
-.calendar .days .day.weekend-day:hover {
-    background: #30271f !important;
-    color: #e9ad70 !important;
-}
-/* HOY: SIEMPRE MORADO, SIN IMPORTAR SU ESTADO */
-.calendar .days .day.today {
     background: #b38add !important;
     background-image: none !important;
     color: white !important;
@@ -1009,9 +1001,14 @@ table {
     border-radius: 5px !important;
 }
 
+/* BORDES UNIFORMES */
+.calendar .days .day {
+    border: 1px solid #f5f5f5 !important;
+}
+
 /* LEYENDA */
 .weekend-dot {
-    background: #ffcc80 !important;
+    background: #382d23 !important;
 }
 
 .busy-dot {
@@ -1020,58 +1017,4 @@ table {
 
 .today-dot {
     background: #b38add !important;
-}
-
-
-/* EVITAR DESTELLOS AL PASAR EL CURSOR EN FINES DE SEMANA */
-.calendar .days .day.weekend-day,
-.calendar .days .day.weekend-day:hover,
-.calendar .days .day.weekend-day:focus {
-    background: #382d23 !important;
-    background-image: none !important;
-    color: #e9ad70 !important;
-    border-color: #6b4b25 !important;
-    transition: none !important;
-    animation: none !important;
-    box-shadow: none !important;
-}
-
-/* IGUALAR LOS BORDES DE TODOS LOS DÍAS */
-.calendar .days .day.weekend-day,
-.calendar .days .day.weekend-day:hover {
-    border: 1px solid #f5f5f5 !important;
-}
-
-
-
-/* =====================================
-   FINES DE SEMANA: BORDES Y EFECTOS
-===================================== */
-
-/* Color normal */
-.calendar .days .day.weekend-day {
-    background: #382d23 !important;
-    color: #e9ad70 !important;
-    border: 1px solid #f5f5f5 !important;
-    box-shadow: none !important;
-    -webkit-tap-highlight-color: transparent;
-}
-
-/* Al pasar el cursor, mantener el mismo fondo */
-.calendar .days .day.weekend-day:hover,
-.calendar .days .day.weekend-day:active,
-.calendar .days .day.weekend-day:focus {
-    background: #382d23 !important;
-    background-image: none !important;
-    color: #e9ad70 !important;
-    border: 1px solid #f5f5f5 !important;
-    box-shadow: none !important;
-    animation: none !important;
-    transition: none !important;
-    -webkit-tap-highlight-color: transparent;
-}
-
-/* Evitar cambios de borde al seleccionar */
-.calendar .days .day.weekend-day.selected {
-    border: 1px solid #f5f5f5 !important;
 }
