@@ -978,3 +978,31 @@ table {
     background-color: #d95362;
     color: white;
 }
+
+/* DÍAS DISPONIBLES */
+.calendar .days .day.free-day {
+    background: #d8f5e1 !important;
+    color: #176b38 !important;
+}
+
+/* EFECTO AL PASAR EL MOUSE */
+.calendar .days .day.free-day:hover {
+    background: #b8eac8 !important;
+}
+
+/* DÍAS OCUPADOS */
+.calendar .days .day.busy-day {
+    background: #ffe0e3 !important;
+    color: #a51d2d !important;
+}
+
+/* CONSERVAR EL COLOR DE HOY */
+.calendar .days .day.free-day.today {
+    background: #27ae60 !important;
+    color: white !important;
+}
+
+.calendar .days .day.busy-day.today {
+    background: #d95362 !important;
+    color: white !important;
+}
