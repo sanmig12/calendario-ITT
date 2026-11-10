@@ -1006,3 +1006,22 @@ table {
     background: #d95362 !important;
     color: white !important;
 }
+
+
+/* SÁBADOS Y DOMINGOS */
+.calendar .days .day.weekend-day {
+    background: #ffcc80 !important;
+    color: #8a4300 !important;
+    font-weight: 700;
+}
+
+/* Si hoy es fin de semana, conserva el morado */
+.calendar .days .day.weekend-day.today {
+    background: var(--primary-clr) !important;
+    color: white !important;
+}
+
+/* PUNTO NARANJA DE LA LEYENDA */
+.weekend-dot {
+    background: #ff9800;
+}
