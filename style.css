@@ -1006,3 +1006,16 @@ table {
     background: #b38add !important;
 }
 
+
+/* EVITAR DESTELLOS AL PASAR EL CURSOR EN FINES DE SEMANA */
+.calendar .days .day.weekend-day,
+.calendar .days .day.weekend-day:hover,
+.calendar .days .day.weekend-day:focus {
+    background: #382d23 !important;
+    background-image: none !important;
+    color: #e9ad70 !important;
+    border-color: #6b4b25 !important;
+    transition: none !important;
+    animation: none !important;
+    box-shadow: none !important;
+}
