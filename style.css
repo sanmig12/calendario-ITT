@@ -978,10 +978,9 @@ table {
 }
 
 .calendar .days .day.weekend-day:hover {
-    background: #f2bd79 !important;
-    color: #8a4300 !important;
+    background: #30271f !important;
+    color: #e9ad70 !important;
 }
-
 /* HOY: SIEMPRE MORADO, SIN IMPORTAR SU ESTADO */
 .calendar .days .day.today {
     background: #b38add !important;
@@ -1006,3 +1005,4 @@ table {
 .today-dot {
     background: #b38add !important;
 }
+
