@@ -557,12 +557,17 @@ const payload = {
 });
 
 // EDITAR VIAJE
+
 function editTrip(trip) {
     editingId = trip.id;
 
     destino.value = trip.destino;
     fecha.value = trip.fecha;
+
+    // Actualizar la fecha mínima de regreso
+    fechaEntrada.min = trip.fecha;
     fechaEntrada.value = trip.fecha_entrada;
+
     hora.value = String(trip.hora_salida).slice(0, 5);
     alumnos.value = trip.alumnos;
     unidad.value = trip.unidad;
@@ -572,8 +577,12 @@ function editTrip(trip) {
     saveTripButton.textContent = "Guardar cambios";
     cancelEditButton.hidden = false;
 
-    adminPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+    adminPanel.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
 }
+
 
 // ELIMINAR VIAJE
 async function deleteTrip(trip) {
