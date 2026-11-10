@@ -117,6 +117,10 @@ function renderCalendar() {
                     : "next-date"
             );
         }
+// Identificar el día de hoy
+if (keyDate(cellDate) === keyDate(today)) {
+    cell.classList.add("today");
+}
 // Identificar sábados y domingos
 const isWeekend =
     cellDate.getDay() === 0 || cellDate.getDay() === 6;
