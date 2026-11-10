@@ -1025,3 +1025,37 @@ table {
 .calendar .days .day.weekend-day:hover {
     border: 1px solid #f5f5f5 !important;
 }
+
+
+
+/* =====================================
+   FINES DE SEMANA: BORDES Y EFECTOS
+===================================== */
+
+/* Color normal */
+.calendar .days .day.weekend-day {
+    background: #382d23 !important;
+    color: #e9ad70 !important;
+    border: 1px solid #f5f5f5 !important;
+    box-shadow: none !important;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Al pasar el cursor, mantener el mismo fondo */
+.calendar .days .day.weekend-day:hover,
+.calendar .days .day.weekend-day:active,
+.calendar .days .day.weekend-day:focus {
+    background: #382d23 !important;
+    background-image: none !important;
+    color: #e9ad70 !important;
+    border: 1px solid #f5f5f5 !important;
+    box-shadow: none !important;
+    animation: none !important;
+    transition: none !important;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Evitar cambios de borde al seleccionar */
+.calendar .days .day.weekend-day.selected {
+    border: 1px solid #f5f5f5 !important;
+}
