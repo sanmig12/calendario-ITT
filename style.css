@@ -1050,3 +1050,16 @@ table {
     background-color: var(--primary-clr) !important;
     color: #ffffff !important;
 }
+
+
+/* PRIORIDAD MÁXIMA PARA EL DÍA DE HOY */
+.calendar .days .day.today {
+    background-color: #b38add !important;
+    background-image: none !important;
+    color: #ffffff !important;
+    border: 1px solid #b38add !important;
+    outline: 3px solid #b38add !important;
+    outline-offset: -4px !important;
+    font-weight: 700 !important;
+    border-radius: 5px !important;
+}
