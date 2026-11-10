@@ -942,124 +942,61 @@ table {
     }
 }
 
+/* =====================================
+   COLORES DEL CALENDARIO
+===================================== */
 
-
-/* =================================
-   COLORES DE DISPONIBILIDAD
-================================= */
-
-/* Días disponibles */
-.calendar .days .day.free-day {
-    background-color: #d8f5e1;
-    color: #176b38;
-    font-weight: 600;
-}
-
-/* Efecto al pasar el cursor */
-.calendar .days .day.free-day:hover {
-    background-color: #b8eac8;
-}
-
-/* Días ocupados */
-.calendar .days .day.busy-day {
-    background-color: #ffe0e3;
-    color: #a51d2d;
-    font-weight: 700;
-}
-
-/* Hoy también conserva el verde si está disponible */
-.calendar .days .day.free-day.today {
-    background-color: #27ae60;
-    color: white;
-}
-
-/* Hoy conserva el rojo si está ocupado */
-.calendar .days .day.busy-day.today {
-    background-color: #d95362;
-    color: white;
-}
-
-/* DÍAS DISPONIBLES */
+/* DÍAS DISPONIBLES: VERDE */
 .calendar .days .day.free-day {
     background: #d8f5e1 !important;
     color: #176b38 !important;
+    font-weight: 600;
 }
 
-/* EFECTO AL PASAR EL MOUSE */
-.calendar .days .day.free-day:hover {
-    background: #b8eac8 !important;
-}
-
-/* DÍAS OCUPADOS */
+/* DÍAS OCUPADOS: ROJO */
 .calendar .days .day.busy-day {
     background: #ffe0e3 !important;
     color: #a51d2d !important;
+    font-weight: 700;
 }
 
-/* CONSERVAR EL COLOR DE HOY */
-.calendar .days .day.free-day.today {
-    background: #27ae60 !important;
-    color: white !important;
-}
-
-.calendar .days .day.busy-day.today {
-    background: #d95362 !important;
-    color: white !important;
-}
-
-
-/* SÁBADOS Y DOMINGOS */
+/* SÁBADOS Y DOMINGOS: NARANJA */
 .calendar .days .day.weekend-day {
     background: #ffcc80 !important;
     color: #8a4300 !important;
     font-weight: 700;
 }
 
-/* Si hoy es fin de semana, conserva el morado */
-.calendar .days .day.weekend-day.today {
-    background: var(--primary-clr) !important;
-    color: white !important;
+/* EFECTO AL PASAR EL CURSOR */
+.calendar .days .day.free-day:hover {
+    background: #b8eac8 !important;
 }
 
-/* PUNTO NARANJA DE LA LEYENDA */
-/* LEYENDA */
-.weekend-dot {
-    background-color: #bd8950 !important;
-}
-
-
-
-/* =====================================
-   PRIORIDAD DE COLORES DEL CALENDARIO
-===================================== */
-
-/* SÁBADOS Y DOMINGOS: NARANJA */
-.calendar .days .day.weekend-day {
-    background-color: #382d23 !important;
-    color: #e9ad70 !important;
-    font-weight: 600;
-}
-
-/* FIN DE SEMANA AL PASAR EL CURSOR */
 .calendar .days .day.weekend-day:hover {
-    background-color: #493725 !important;
+    background: #ffb74d !important;
 }
 
-/* HOY: CONSERVAR MORADO */
-.calendar .days .day.weekend-day.today {
-    background-color: var(--primary-clr) !important;
-    color: #ffffff !important;
-}
-
-
-/* PRIORIDAD MÁXIMA PARA EL DÍA DE HOY */
+/* HOY: SIEMPRE MORADO, SIN IMPORTAR SU ESTADO */
 .calendar .days .day.today {
-    background-color: #b38add !important;
+    background: #b38add !important;
     background-image: none !important;
-    color: #ffffff !important;
+    color: white !important;
     border: 1px solid #b38add !important;
     outline: 3px solid #b38add !important;
     outline-offset: -4px !important;
     font-weight: 700 !important;
     border-radius: 5px !important;
+}
+
+/* LEYENDA */
+.weekend-dot {
+    background: #ffcc80 !important;
+}
+
+.busy-dot {
+    background: #d95362 !important;
+}
+
+.today-dot {
+    background: #b38add !important;
 }
