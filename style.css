@@ -1072,3 +1072,156 @@ table {
         border-color: #e9e9ed !important;
     }
 }
+
+/* ==========================================
+   TEMAS PROPIOS DEL CALENDARIO
+========================================== */
+
+/* BOTÓN PARA CAMBIAR TEMA */
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    background: #b38add;
+    color: white;
+}
+
+/* ==========================================
+   MODO CLARO
+========================================== */
+
+body[data-theme="light"] .calendar {
+    background: #ffffff;
+    color: #85899a;
+}
+
+body[data-theme="light"] .calendar .month,
+body[data-theme="light"] .calendar .weekdays {
+    color: #85899a;
+}
+
+/* Días disponibles */
+body[data-theme="light"] .calendar .days .day.free-day {
+    background: #e5f5e9 !important;
+    color: #247044 !important;
+    border-color: #e9eee9 !important;
+}
+
+/* Días con viajes */
+body[data-theme="light"] .calendar .days .day.busy-day {
+    background: #fcebed !important;
+    color: #b83248 !important;
+    border-color: #f0e5e6 !important;
+}
+
+/* Fines de semana */
+body[data-theme="light"] .calendar .days .day.weekend-day {
+    background: #f2eee9 !important;
+    color: #80634d !important;
+    border-color: #e9e3dc !important;
+}
+
+/* Día actual */
+body[data-theme="light"] .calendar .days .day.today {
+    background: #b38add !important;
+    color: #ffffff !important;
+    border: 1px solid #a16bd1 !important;
+    outline: 3px solid #b38add !important;
+    outline-offset: -4px !important;
+}
+
+/* Días fuera del mes */
+body[data-theme="light"] .calendar .days .day.prev-date,
+body[data-theme="light"] .calendar .days .day.next-date {
+    background: #ffffff !important;
+    color: #c5c5cc !important;
+}
+
+/* Hover */
+body[data-theme="light"] .calendar .days .day:hover {
+    filter: brightness(.97);
+}
+
+/* ==========================================
+   MODO OSCURO
+========================================== */
+
+body[data-theme="dark"] {
+    background: #22222b;
+    color: #eeeeee;
+}
+
+body[data-theme="dark"] .container {
+    background: #171717;
+}
+
+body[data-theme="dark"] .calendar {
+    background: #141414;
+    color: #8998b2;
+}
+
+body[data-theme="dark"] .calendar .month,
+body[data-theme="dark"] .calendar .weekdays {
+    color: #8998b2;
+}
+
+/* Días disponibles */
+body[data-theme="dark"] .calendar .days .day.free-day {
+    background: #153323 !important;
+    color: #69d69a !important;
+    border-color: #484848 !important;
+}
+
+/* Días con viajes */
+body[data-theme="dark"] .calendar .days .day.busy-day {
+    background: #40272a !important;
+    color: #ff777e !important;
+    border-color: #484848 !important;
+}
+
+/* Fines de semana */
+body[data-theme="dark"] .calendar .days .day.weekend-day {
+    background: #392c20 !important;
+    color: #e9a45e !important;
+    border-color: #484848 !important;
+}
+
+/* Día actual */
+body[data-theme="dark"] .calendar .days .day.today {
+    background: #b38add !important;
+    color: #ffffff !important;
+    border: 1px solid #b38add !important;
+    outline: 3px solid #b38add !important;
+    outline-offset: -4px !important;
+}
+
+/* Días fuera del mes */
+body[data-theme="dark"] .calendar .days .day.prev-date,
+body[data-theme="dark"] .calendar .days .day.next-date {
+    background: #141414 !important;
+    color: #aeb4c1 !important;
+}
+
+/* Bordes */
+body[data-theme="dark"] .calendar .days .day {
+    border-color: #484848 !important;
+}
+
+/* Leyenda */
+body[data-theme="dark"] .weekend-dot {
+    background: #392c20 !important;
+}
+
+body[data-theme="dark"] .busy-dot {
+    background: #e65369 !important;
+}
+
+body[data-theme="dark"] .today-dot {
+    background: #b38add !important;
+}
+
+/* Texto de la leyenda */
+body[data-theme="dark"] .calendar-legend {
+    color: #aeb4c1;
+}
