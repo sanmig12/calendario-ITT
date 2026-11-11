@@ -696,18 +696,6 @@ const initialTheme = savedTheme === "dark" || savedTheme === "light"
 // Aplicar tema inicial
 applyTheme(initialTheme);
 
-// Cambiar tema al presionar el botón
-themeToggle.addEventListener("click", () => {
-
-    const currentTheme = document.body.dataset.theme;
-
-    const newTheme = currentTheme === "dark"
-        ? "light"
-        : "dark";
-
-    applyTheme(newTheme);
-
-});
 
 themeToggle.addEventListener("click", () => {
 
