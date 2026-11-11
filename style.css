@@ -1148,3 +1148,31 @@ body[data-theme="dark"] .today-dot {
 .theme-toggle:hover {
     background: #9e70ca;
 }
+
+
+/* ==========================================
+   CORRECCIÓN: MOSTRAR CALENDARIO AL INICIAR
+========================================== */
+
+.calendar {
+    min-height: 600px !important;
+}
+
+.calendar .days {
+    display: grid !important;
+    grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
+    grid-template-rows: repeat(6, minmax(55px, 1fr));
+    min-height: 390px !important;
+    flex: 1;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.calendar .days .day {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    min-height: 55px;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
