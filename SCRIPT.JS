@@ -19,6 +19,195 @@ const db = configured
     )
     : null;
 
+// ==========================================
+// RECUPERACIÓN DE CONTRASEÑA DEL JEFE
+// ==========================================
+
+function mostrarRecuperacion() {
+    // Evitar crear dos ventanas
+    if (document.getElementById("recovery-modal")) return;
+
+    const modal = document.createElement("div");
+    modal.id = "recovery-modal";
+
+    modal.style.cssText = `
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        background: rgba(0,0,0,0.75);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    `;
+
+    modal.innerHTML = `
+        <div style="
+            background: var(--card-bg, #ffffff);
+            color: var(--text-color, #222222);
+            padding: 30px;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 10px 35px rgba(0,0,0,.3);
+        ">
+            <h2 style="margin-bottom:10px;">
+                Nueva contraseña
+            </h2>
+
+            <p style="margin-bottom:20px;">
+                Escribe la nueva contraseña del jefe.
+            </p>
+
+            <form id="recovery-form">
+                <label for="new-password">
+                    Nueva contraseña
+                </label>
+
+                <input
+                    id="new-password"
+                    type="password"
+                    minlength="8"
+                    autocomplete="new-password"
+                    required
+                    placeholder="Mínimo 8 caracteres"
+                    style="
+                        width:100%;
+                        padding:12px;
+                        margin:8px 0 16px;
+                        border:1px solid #ccc;
+                        border-radius:8px;
+                    "
+                >
+
+                <label for="confirm-password">
+                    Confirmar contraseña
+                </label>
+
+                <input
+                    id="confirm-password"
+                    type="password"
+                    minlength="8"
+                    autocomplete="new-password"
+                    required
+                    placeholder="Repite la contraseña"
+                    style="
+                        width:100%;
+                        padding:12px;
+                        margin:8px 0 16px;
+                        border:1px solid #ccc;
+                        border-radius:8px;
+                    "
+                >
+
+                <p id="recovery-message"
+                   style="margin-bottom:15px;">
+                </p>
+
+                <button
+                    id="recovery-save"
+                    type="submit"
+                    style="
+                        width:100%;
+                        padding:13px;
+                        border:0;
+                        border-radius:8px;
+                        background:#3678ff;
+                        color:white;
+                        cursor:pointer;
+                    "
+                >
+                    Guardar nueva contraseña
+                </button>
+            </form>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    const form = document.getElementById("recovery-form");
+    const password = document.getElementById("new-password");
+    const confirmPassword = document.getElementById("confirm-password");
+    const recoveryMessage = document.getElementById("recovery-message");
+    const saveButton = document.getElementById("recovery-save");
+
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        if (password.value !== confirmPassword.value) {
+            recoveryMessage.textContent =
+                "Las contraseñas no coinciden.";
+            recoveryMessage.style.color = "red";
+            return;
+        }
+
+        if (password.value.length < 8) {
+            recoveryMessage.textContent =
+                "La contraseña debe tener al menos 8 caracteres.";
+            recoveryMessage.style.color = "red";
+            return;
+        }
+
+        saveButton.disabled = true;
+        saveButton.textContent = "Guardando...";
+
+        try {
+            const { error } = await db.auth.updateUser({
+                password: password.value
+            });
+
+            if (error) throw error;
+
+            alert(
+                "¡Contraseña actualizada correctamente! " +
+                "Ahora puedes iniciar sesión con tu nueva contraseña."
+            );
+
+            await db.auth.signOut();
+
+            currentUser = null;
+            adminPanel.hidden = true;
+            logoutButton.hidden = true;
+
+            adminAccess.innerHTML =
+                '<i class="fa-solid fa-lock"></i>';
+
+            adminAccess.title = "Acceso del jefe";
+
+            modal.remove();
+
+            loginModal.hidden = false;
+            message(
+                loginMessage,
+                "Contraseña actualizada. Inicia sesión.",
+                "success"
+            );
+
+            await loadTrips();
+
+        } catch (error) {
+            console.error("Error al cambiar contraseña:", error);
+
+            recoveryMessage.textContent =
+                error.message || "No se pudo actualizar la contraseña.";
+
+            recoveryMessage.style.color = "red";
+
+            saveButton.disabled = false;
+            saveButton.textContent = "Guardar nueva contraseña";
+        }
+    });
+}
+
+// Detectar cuando el jefe llega desde el correo
+if (db) {
+    db.auth.onAuthStateChange((event) => {
+        if (event === "PASSWORD_RECOVERY") {
+            mostrarRecuperacion();
+        }
+    });
+}
+
 // Elementos del calendario
 const dateTitle = document.querySelector(".date");
 const daysContainer = document.querySelector(".days");
