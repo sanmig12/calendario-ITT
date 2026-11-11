@@ -1176,3 +1176,24 @@ body[data-theme="dark"] .today-dot {
     visibility: visible !important;
     opacity: 1 !important;
 }
+
+
+/* ==========================================
+   ALINEAR LOS DÍAS DE LA SEMANA
+========================================== */
+
+.calendar .weekdays {
+    display: grid !important;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    padding: 0 10px;
+    width: 100%;
+}
+
+.calendar .weekdays > div {
+    width: 100% !important;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
