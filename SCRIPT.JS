@@ -708,3 +708,38 @@ themeToggle.addEventListener("click", () => {
     applyTheme(newTheme);
 
 });
+
+themeToggle.addEventListener("click", () => {
+
+    const currentTheme = document.body.dataset.theme;
+
+    const newTheme = currentTheme === "dark"
+        ? "light"
+        : "dark";
+
+    applyTheme(newTheme);
+
+});
+
+
+/* ==========================================
+   INICIALIZAR CALENDARIO AL CARGAR LA PÁGINA
+========================================== */
+
+// Mostrar inmediatamente el mes actual
+fecha.value = keyDate(selectedDate);
+
+renderCalendar();
+
+// Comprobar sesión y cargar los viajes
+async function iniciarCalendario() {
+
+    await checkSession();
+
+    await loadTrips();
+
+}
+
+// Ejecutar inicialización
+iniciarCalendario();
+
