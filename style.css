@@ -1020,48 +1020,55 @@ table {
 }
 
 
-/* =================================
-   COLORES DEL CALENDARIO - MODO CLARO
-================================= */
+/* =========================================
+   CORRECCIÓN DEFINITIVA - MODO CLARO
+========================================= */
 
 @media (prefers-color-scheme: light) {
 
-    .free-day {
+    /* DÍAS DISPONIBLES */
+    .calendar .days .day.free-day,
+    .calendar .days .day.free-day:hover {
         background: #e5f5e9 !important;
-        color: #247044 !important;
+        color: #267448 !important;
+        border-color: #e1e8e2 !important;
     }
 
-    .busy-day {
+    /* DÍAS CON VIAJES */
+    .calendar .days .day.busy-day,
+    .calendar .days .day.busy-day:hover {
         background: #fcebed !important;
         color: #b83248 !important;
+        border-color: #f0e2e4 !important;
     }
 
-    .weekend-day {
+    /* FINES DE SEMANA */
+    .calendar .days .day.weekend-day,
+    .calendar .days .day.weekend-day:hover {
         background: #f2eee9 !important;
         color: #80634d !important;
+        border-color: #e9e3dc !important;
     }
 
-    .free-day:hover {
-        background: #d1edda !important;
-    }
-
-    .busy-day:hover {
-        background: #f6d9de !important;
-    }
-
-    .weekend-day:hover {
-        background: #e8dfd6 !important;
-    }
-
-    /* HOY: MORADO */
-    .day.today {
+    /* DÍA ACTUAL */
+    .calendar .days .day.today,
+    .calendar .days .day.today:hover {
         background: #b38add !important;
         color: #ffffff !important;
-        border: 2px solid #a16bd1 !important;
+        border: 1px solid #a16bd1 !important;
+        outline: 3px solid #b38add !important;
+        outline-offset: -4px !important;
+    }
+
+    /* DÍAS FUERA DEL MES */
+    .calendar .days .day.prev-date,
+    .calendar .days .day.next-date {
+        background: #ffffff !important;
+        color: #c5c5cc !important;
     }
 
     /* BORDES */
-    .day {
+    .calendar .days .day {
         border-color: #e9e9ed !important;
     }
 }
