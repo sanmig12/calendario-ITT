@@ -943,153 +943,25 @@ table {
 }
 
 
-/* =====================================
-   COLORES Y EFECTOS DEL CALENDARIO
-===================================== */
-
-/* DÍAS DISPONIBLES: VERDE */
-.calendar .days .day.free-day {
-    background: #d8f5e1 !important;
-    color: #176b38 !important;
-    border: 1px solid #f5f5f5 !important;
-    font-weight: 600;
-}
-
-/* EFECTO VERDE */
-.calendar .days .day.free-day:hover {
-    background: #b8eac8 !important;
-}
-
-/* DÍAS OCUPADOS: ROJO */
-.calendar .days .day.busy-day {
-    background: #ffe0e3 !important;
-    color: #a51d2d !important;
-    border: 1px solid #f5f5f5 !important;
-    font-weight: 700;
-}
-
-/* EFECTO ROJO AL PASAR EL CURSOR */
-.calendar .days .day.busy-day:hover {
-    background: #f3c1c6 !important;
-    color: #8f1828 !important;
-}
-
-/* FINES DE SEMANA: CAFÉ-NARANJA */
-.calendar .days .day.weekend-day {
-    background: #382d23 !important;
-    color: #e9ad70 !important;
-    border: 1px solid #f5f5f5 !important;
-    font-weight: 700;
-}
-
-/* EFECTO CAFÉ-NARANJA AL PASAR EL CURSOR */
-.calendar .days .day.weekend-day:hover {
-    background: #59432f !important;
-    color: #ffd09a !important;
-}
-
-/* HOY: SIEMPRE MORADO */
-.calendar .days .day.today,
-.calendar .days .day.today:hover {
-    background: #b38add !important;
-    background-image: none !important;
-    color: white !important;
-    border: 1px solid #b38add !important;
-    outline: 3px solid #b38add !important;
-    outline-offset: -4px !important;
-    font-weight: 700 !important;
-    border-radius: 5px !important;
-}
-
-/* BORDES UNIFORMES */
-.calendar .days .day {
-    border: 1px solid #f5f5f5 !important;
-}
-
-/* LEYENDA */
-.weekend-dot {
-    background: #382d23 !important;
-}
-
-.busy-dot {
-    background: #d95362 !important;
-}
-
-.today-dot {
-    background: #b38add !important;
-}
-
-
-/* =========================================
-   CORRECCIÓN DEFINITIVA - MODO CLARO
-========================================= */
-
-@media (prefers-color-scheme: light) {
-
-    /* DÍAS DISPONIBLES */
-    .calendar .days .day.free-day,
-    .calendar .days .day.free-day:hover {
-        background: #e5f5e9 !important;
-        color: #267448 !important;
-        border-color: #e1e8e2 !important;
-    }
-
-    /* DÍAS CON VIAJES */
-    .calendar .days .day.busy-day,
-    .calendar .days .day.busy-day:hover {
-        background: #fcebed !important;
-        color: #b83248 !important;
-        border-color: #f0e2e4 !important;
-    }
-
-    /* FINES DE SEMANA */
-    .calendar .days .day.weekend-day,
-    .calendar .days .day.weekend-day:hover {
-        background: #f2eee9 !important;
-        color: #80634d !important;
-        border-color: #e9e3dc !important;
-    }
-
-    /* DÍA ACTUAL */
-    .calendar .days .day.today,
-    .calendar .days .day.today:hover {
-        background: #b38add !important;
-        color: #ffffff !important;
-        border: 1px solid #a16bd1 !important;
-        outline: 3px solid #b38add !important;
-        outline-offset: -4px !important;
-    }
-
-    /* DÍAS FUERA DEL MES */
-    .calendar .days .day.prev-date,
-    .calendar .days .day.next-date {
-        background: #ffffff !important;
-        color: #c5c5cc !important;
-    }
-
-    /* BORDES */
-    .calendar .days .day {
-        border-color: #e9e9ed !important;
-    }
-}
-
 /* ==========================================
-   TEMAS PROPIOS DEL CALENDARIO
+   CALENDARIO ITT - TEMAS DEFINITIVOS
 ========================================== */
-
-/* BOTÓN PARA CAMBIAR TEMA */
-.theme-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 12px;
-    background: #b38add;
-    color: white;
-}
 
 /* ==========================================
    MODO CLARO
 ========================================== */
+
+body[data-theme="light"] {
+    background: #e2e1dc;
+    color: #373c4f;
+    --primary-clr: #b38add;
+    --text-clr: #85899a;
+    --busy-clr: #d95362;
+}
+
+body[data-theme="light"] .container {
+    background: #373c4f;
+}
 
 body[data-theme="light"] .calendar {
     background: #ffffff;
@@ -1101,46 +973,70 @@ body[data-theme="light"] .calendar .weekdays {
     color: #85899a;
 }
 
-/* Días disponibles */
-body[data-theme="light"] .calendar .days .day.free-day {
+/* DÍAS DISPONIBLES: VERDE */
+body[data-theme="light"] .calendar .days .day.free-day,
+body[data-theme="light"] .calendar .days .day.free-day:hover {
     background: #e5f5e9 !important;
     color: #247044 !important;
-    border-color: #e9eee9 !important;
+    border: 1px solid #e9eee9 !important;
 }
 
-/* Días con viajes */
-body[data-theme="light"] .calendar .days .day.busy-day {
+/* DÍAS OCUPADOS: ROJO */
+body[data-theme="light"] .calendar .days .day.busy-day,
+body[data-theme="light"] .calendar .days .day.busy-day:hover {
     background: #fcebed !important;
     color: #b83248 !important;
-    border-color: #f0e5e6 !important;
+    border: 1px solid #f0e5e6 !important;
 }
 
-/* Fines de semana */
-body[data-theme="light"] .calendar .days .day.weekend-day {
+/* FINES DE SEMANA: BEIGE Y NARANJA */
+body[data-theme="light"] .calendar .days .day.weekend-day,
+body[data-theme="light"] .calendar .days .day.weekend-day:hover {
     background: #f2eee9 !important;
     color: #80634d !important;
-    border-color: #e9e3dc !important;
+    border: 1px solid #e9e3dc !important;
 }
 
-/* Día actual */
-body[data-theme="light"] .calendar .days .day.today {
+/* HOY: MORADO */
+body[data-theme="light"] .calendar .days .day.today,
+body[data-theme="light"] .calendar .days .day.today:hover {
     background: #b38add !important;
     color: #ffffff !important;
     border: 1px solid #a16bd1 !important;
     outline: 3px solid #b38add !important;
     outline-offset: -4px !important;
+    font-weight: 700 !important;
+    border-radius: 5px !important;
 }
 
-/* Días fuera del mes */
+/* DÍAS FUERA DEL MES */
 body[data-theme="light"] .calendar .days .day.prev-date,
 body[data-theme="light"] .calendar .days .day.next-date {
     background: #ffffff !important;
     color: #c5c5cc !important;
 }
 
-/* Hover */
-body[data-theme="light"] .calendar .days .day:hover {
-    filter: brightness(.97);
+/* PANELES */
+body[data-theme="light"] .panel {
+    background: #41475a;
+    color: #ffffff;
+}
+
+/* LEYENDA */
+body[data-theme="light"] .calendar-legend {
+    color: #85899a;
+}
+
+body[data-theme="light"] .weekend-dot {
+    background: #80634d !important;
+}
+
+body[data-theme="light"] .busy-dot {
+    background: #d95362 !important;
+}
+
+body[data-theme="light"] .today-dot {
+    background: #b38add !important;
 }
 
 /* ==========================================
@@ -1150,6 +1046,9 @@ body[data-theme="light"] .calendar .days .day:hover {
 body[data-theme="dark"] {
     background: #22222b;
     color: #eeeeee;
+    --primary-clr: #b38add;
+    --text-clr: #8998b2;
+    --busy-clr: #e65369;
 }
 
 body[data-theme="dark"] .container {
@@ -1166,51 +1065,62 @@ body[data-theme="dark"] .calendar .weekdays {
     color: #8998b2;
 }
 
-/* Días disponibles */
-body[data-theme="dark"] .calendar .days .day.free-day {
+/* DÍAS DISPONIBLES: VERDE OSCURO */
+body[data-theme="dark"] .calendar .days .day.free-day,
+body[data-theme="dark"] .calendar .days .day.free-day:hover {
     background: #153323 !important;
     color: #69d69a !important;
-    border-color: #484848 !important;
+    border: 1px solid #484848 !important;
 }
 
-/* Días con viajes */
-body[data-theme="dark"] .calendar .days .day.busy-day {
+/* DÍAS OCUPADOS: ROJO OSCURO */
+body[data-theme="dark"] .calendar .days .day.busy-day,
+body[data-theme="dark"] .calendar .days .day.busy-day:hover {
     background: #40272a !important;
     color: #ff777e !important;
-    border-color: #484848 !important;
+    border: 1px solid #484848 !important;
 }
 
-/* Fines de semana */
-body[data-theme="dark"] .calendar .days .day.weekend-day {
+/* FINES DE SEMANA: CAFÉ */
+body[data-theme="dark"] .calendar .days .day.weekend-day,
+body[data-theme="dark"] .calendar .days .day.weekend-day:hover {
     background: #392c20 !important;
     color: #e9a45e !important;
-    border-color: #484848 !important;
+    border: 1px solid #484848 !important;
 }
 
-/* Día actual */
-body[data-theme="dark"] .calendar .days .day.today {
+/* HOY: MORADO */
+body[data-theme="dark"] .calendar .days .day.today,
+body[data-theme="dark"] .calendar .days .day.today:hover {
     background: #b38add !important;
     color: #ffffff !important;
     border: 1px solid #b38add !important;
     outline: 3px solid #b38add !important;
     outline-offset: -4px !important;
+    font-weight: 700 !important;
+    border-radius: 5px !important;
 }
 
-/* Días fuera del mes */
+/* DÍAS FUERA DEL MES */
 body[data-theme="dark"] .calendar .days .day.prev-date,
 body[data-theme="dark"] .calendar .days .day.next-date {
     background: #141414 !important;
-    color: #aeb4c1 !important;
+    color: #777f91 !important;
 }
 
-/* Bordes */
-body[data-theme="dark"] .calendar .days .day {
-    border-color: #484848 !important;
+/* PANELES */
+body[data-theme="dark"] .panel {
+    background: #292936;
+    color: #eeeeee;
 }
 
-/* Leyenda */
+/* LEYENDA */
+body[data-theme="dark"] .calendar-legend {
+    color: #aeb4c1;
+}
+
 body[data-theme="dark"] .weekend-dot {
-    background: #392c20 !important;
+    background: #e9a45e !important;
 }
 
 body[data-theme="dark"] .busy-dot {
@@ -1221,7 +1131,20 @@ body[data-theme="dark"] .today-dot {
     background: #b38add !important;
 }
 
-/* Texto de la leyenda */
-body[data-theme="dark"] .calendar-legend {
-    color: #aeb4c1;
+/* ==========================================
+   BOTÓN DE CAMBIO DE TEMA
+========================================== */
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+    background: #b38add;
+    color: #ffffff;
+}
+
+.theme-toggle:hover {
+    background: #9e70ca;
 }
