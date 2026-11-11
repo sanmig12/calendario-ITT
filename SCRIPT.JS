@@ -585,7 +585,7 @@ function editTrip(trip) {
     responsable.value = trip.responsable;
 
     formTitle.textContent = "Editar viaje";
-    saveTripButton.textContent = "Guardar cambios";
+    saveTripButton.textContent = "Guardar s";
     cancelEditButton.hidden = false;
 
     adminPanel.scrollIntoView({
@@ -660,65 +660,51 @@ fechaEntrada.addEventListener("change", () => {
 
 const themeToggle = document.getElementById("theme-toggle");
 
+// Aplicar el tema seleccionado
 function applyTheme(theme) {
+
     document.body.dataset.theme = theme;
 
     if (theme === "dark") {
+
         themeToggle.innerHTML =
             '<i class="fa-solid fa-sun"></i> Modo claro';
+
     } else {
+
         themeToggle.innerHTML =
             '<i class="fa-solid fa-moon"></i> Modo oscuro';
+
     }
 
+    // Guardar preferencia
     localStorage.setItem("calendar-theme", theme);
 }
 
-// Recuperar tema guardado o utilizar el del sistema
+// Recuperar el tema guardado
 const savedTheme = localStorage.getItem("calendar-theme");
 
-const initialTheme = savedTheme ||
-    (window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light");
+// Si no existe una preferencia, utilizar el tema del dispositivo
+const initialTheme = savedTheme === "dark" || savedTheme === "light"
+    ? savedTheme
+    : (
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light"
+    );
 
+// Aplicar tema inicial
 applyTheme(initialTheme);
 
 // Cambiar tema al presionar el botón
 themeToggle.addEventListener("click", () => {
+
     const currentTheme = document.body.dataset.theme;
 
-    applyTheme(currentTheme === "dark" ? "light" : "dark");
+    const newTheme = currentTheme === "dark"
+        ? "light"
+        : "dark";
+
+    applyTheme(newTheme);
+
 });
-```
-
-## 4. ¿Qué conseguirás?
-
-<grid columns={2} gap={3}>
-  <grid-item>
-    <AsyncImage query="minimal light mode calendar UI pastel green pink beige purple date cells clean white background" aspectRatio="4:5" width="100%"/>
-    **Modo claro**
-
-    <text color="secondary" size="xs">Verde, rosa y beige suaves.</text>
-  </grid-item>
-  <grid-item>
-    <AsyncImage query="dark mode calendar UI black background dark green dark red brown purple selected date grid" aspectRatio="4:5" width="100%"/>
-    **Modo oscuro**
-
-    <text color="secondary" size="xs">Colores oscuros y morado para hoy.</text>
-  </grid-item>
-</grid>
-
-Además:
-- El tema elegido se guarda aunque cierres la página.
-- Al entrar por primera vez, utiliza el tema de tu dispositivo.
-- Puedes cambiarlo cuando quieras con el botón.
-
-**Importante:** después de guardar los archivos, presiona `Ctrl + F5` para actualizar los estilos y evitar que el navegador muestre una versión anterior.
-
-No necesitas reemplazar tu JavaScript completo, solamente agregar la función indicada.
-// INICIAR
-fecha.value = keyDate(selectedDate);
-renderCalendar();
-renderTripsForSelectedDate();
-checkSession().then(() => loadTrips());
