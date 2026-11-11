@@ -1197,3 +1197,38 @@ body[data-theme="dark"] .today-dot {
     align-items: center;
     text-align: center;
 }
+
+/* ==========================================
+   FOOTER - CRÉDITOS
+========================================== */
+
+.footer {
+    width: 100%;
+    padding: 25px 15px;
+    margin-top: 15px;
+    text-align: center;
+    border-top: 1px solid #373c4f30;
+}
+
+.footer p {
+    color: #686b79;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.footer span {
+    color: #9b70c9;
+    font-weight: 700;
+}
+
+body[data-theme="dark"] .footer {
+    border-top-color: #ffffff20;
+}
+
+body[data-theme="dark"] .footer p {
+    color: #b8b8c8;
+}
+
+body[data-theme="dark"] .footer span {
+    color: #c9a5f0;
+}
