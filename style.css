@@ -1018,3 +1018,50 @@ table {
 .today-dot {
     background: #b38add !important;
 }
+
+
+/* =================================
+   COLORES DEL CALENDARIO - MODO CLARO
+================================= */
+
+@media (prefers-color-scheme: light) {
+
+    .free-day {
+        background: #e5f5e9 !important;
+        color: #247044 !important;
+    }
+
+    .busy-day {
+        background: #fcebed !important;
+        color: #b83248 !important;
+    }
+
+    .weekend-day {
+        background: #f2eee9 !important;
+        color: #80634d !important;
+    }
+
+    .free-day:hover {
+        background: #d1edda !important;
+    }
+
+    .busy-day:hover {
+        background: #f6d9de !important;
+    }
+
+    .weekend-day:hover {
+        background: #e8dfd6 !important;
+    }
+
+    /* HOY: MORADO */
+    .day.today {
+        background: #b38add !important;
+        color: #ffffff !important;
+        border: 2px solid #a16bd1 !important;
+    }
+
+    /* BORDES */
+    .day {
+        border-color: #e9e9ed !important;
+    }
+}
